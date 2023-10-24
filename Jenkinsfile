@@ -3,7 +3,7 @@ pipeline {
     environment{
         //REGISTRY = 'roxsross12'
         REPOSITORY = 'servidorweb'
-        TAG = '1.0.7'
+        TAG = '1.0.8'
         DOCKER_HUB_LOGIN = credentials('docker')
     }
 
@@ -16,12 +16,21 @@ pipeline {
 
             }
         }   
-        stage('deploy') {
+        stage('push_to_hub') {
             steps {
                 sh 'docker tag $REPOSITORY:$TAG $REGISTRY/$REPOSITORY:$TAG'
                 sh 'docker login --username=$DOCKER_HUB_LOGIN_USR --password=$DOCKER_HUB_LOGIN_PSW'
                 sh 'docker push $REGISTRY/$REPOSITORY:$TAG'
+                sh 'docker image prune'
+   
             }
-        }         
+        } 
+        stage('update_compose') {
+            steps {
+                sh ("sed -i -- 's/REPLACE/$TAG/g docker-compose.yml")
+                sh 'cat docker-compose.yml'
+   
+            }
+        }                 
     }
 }
