@@ -3,7 +3,7 @@ pipeline {
     environment{
         //REGISTRY = 'roxsross12'
         REPOSITORY = 'servidorweb'
-        TAG = '1.0.8'
+        TAG = '1.0.9'
         DOCKER_HUB_LOGIN = credentials('docker')
     }
 
@@ -29,8 +29,20 @@ pipeline {
             steps {
                 sh ("sed -i -- 's/REPLACE/$TAG/g' docker-compose.yml")
                 sh 'cat docker-compose.yml'
-   
+
             }
-        }                 
+        } 
+        stage('deploy_to_prod') {
+            input {
+                message 'Deploy a produccion'
+                ok 'validar'
+                parameters {
+                    string (name: 'ENVIRONMENT', defaultValue: 'PROD', description: 'despliegue en produccion')
+                }
+            }
+            steps {
+                echo "Se despliega el release $TAG en el ambiente $ENVIRONMENT"
+            }
+        }                          
     }
 }
