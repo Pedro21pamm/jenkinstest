@@ -21,7 +21,7 @@ pipeline {
                 sh 'docker tag $REPOSITORY:$TAG $REGISTRY/$REPOSITORY:$TAG'
                 sh 'docker login --username=$DOCKER_HUB_LOGIN_USR --password=$DOCKER_HUB_LOGIN_PSW'
                 sh 'docker push $REGISTRY/$REPOSITORY:$TAG'
-                sh 'docker image prune'
+                sh 'docker image prune --force'
    
             }
         } 
