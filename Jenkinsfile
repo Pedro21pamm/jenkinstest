@@ -27,7 +27,7 @@ pipeline {
         } 
         stage('update_compose') {
             steps {
-                sh ("sed -i -- 's/REPLACE/$TAG/g docker-compose.yml")
+                sh ("sed -i -- 's/REPLACE/$TAG/g' docker-compose.yml")
                 sh 'cat docker-compose.yml'
    
             }
