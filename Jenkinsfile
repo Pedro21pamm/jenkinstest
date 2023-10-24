@@ -1,7 +1,7 @@
 pipeline {
     agent any
     environment{
-        REGISTRY = 'roxsross12'
+        //REGISTRY = 'roxsross12'
         REPOSITORY = 'servidorweb'
         TAG = '1.0.7'
         DOCKER_HUB_LOGIN = credentials('docker')
