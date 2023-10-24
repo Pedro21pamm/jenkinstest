@@ -42,6 +42,7 @@ pipeline {
             }
             steps {
                 echo "Se despliega el release $TAG en el ambiente $ENVIRONMENT"
+                sh 'ssh $SSHIP ls'
             }
         }                          
     }
