@@ -42,9 +42,7 @@ pipeline {
             }
             steps {
                 echo "Se despliega el release $TAG en el ambiente $ENVIRONMENT"
-                sshagent (['ssh']){
                 sh 'ssh -o StrictHostKeyChecking=no $SSHIP ls -lrt'
-             }
             }
         }                          
     }
