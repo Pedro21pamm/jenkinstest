@@ -42,7 +42,6 @@ pipeline {
             }
             steps {
                 echo "Se despliega el release $TAG en el ambiente $ENVIRONMENT"
-                sh 'ssh -o StrictHostKeyChecking=no $SSHIP ls -lrt'
             }
         }                          
     }
