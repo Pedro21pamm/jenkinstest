@@ -4,7 +4,7 @@ pipeline {
         //REGISTRY = 'roxsross12'
         REPOSITORY = 'servidorweb'
         TAG = '1.0.14'
-        DOCKER_HUB_LOGIN = credentials('docker')
+        DOCKER_HUB_LOGIN = credentials('docker-hub')
     }
 
     stages {
