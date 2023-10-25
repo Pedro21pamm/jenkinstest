@@ -1,10 +1,10 @@
 pipeline {
     agent any
     environment{
-        //REGISTRY = 'roxsross12'
+        REGISTRY = 'josevd'
         REPOSITORY = 'servidorweb'
         TAG = '1.0.14'
-        DOCKER_HUB_LOGIN = credentials('docker-hub')
+        DOCKER_HUB_LOGIN = credentials('dockerjv')
     }
 
     stages {
