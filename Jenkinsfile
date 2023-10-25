@@ -3,7 +3,7 @@ pipeline {
     environment{
         //REGISTRY = 'roxsross12'
         REPOSITORY = 'servidorweb'
-        TAG = '1.0.9'
+        TAG = '1.0.10'
         DOCKER_HUB_LOGIN = credentials('docker')
     }
 
